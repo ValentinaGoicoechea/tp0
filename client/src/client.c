@@ -45,8 +45,8 @@ int main(void)
 	enviar_mensaje(valor,conexion); 
 
 	// Armamos y enviamos el paquete
-	paquete(conexion);
-	 
+	paquete(conexion); 
+
 	terminar_programa(conexion, logger, config);
 
 	/*---------------------------------------------------PARTE 5-------------------------------------------------------------*/
@@ -92,6 +92,9 @@ void paquete(int conexion)
 		free(leido);
 		leido=readline(">");
 	}
+	//Envio paquete
+	enviar_paquete(paquete, conexion);
+
 	free(leido);
 	eliminar_paquete(paquete);
 	
@@ -101,6 +104,5 @@ void terminar_programa(int conexion, t_log* logger, t_config* config)
 {	
 	log_destroy(logger);
 	config_destroy(config);
-	/* Y por ultimo, hay que liberar lo que utilizamos (conexion, log y config) 
-	  con las funciones de las commons y del TP mencionadas en el enunciado */
+	liberar_conexion(conexion);
 }
