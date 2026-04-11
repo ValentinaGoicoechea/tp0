@@ -39,13 +39,14 @@ int main(void)
 	// ADVERTENCIA: Antes de continuar, tenemos que asegurarnos que el servidor esté corriendo para poder conectarnos a él
 
 	// Creamos una conexión hacia el servidor
-	conexion = crear_conexion(ip, puerto);
+	conexion = crear_conexion(ip, puerto); //TIENE EL SOCKET CLIENTE
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
+	enviar_mensaje(valor,conexion); 
 
 	// Armamos y enviamos el paquete
 	paquete(conexion);
-
+	 
 	terminar_programa(conexion, logger, config);
 
 	/*---------------------------------------------------PARTE 5-------------------------------------------------------------*/
@@ -82,14 +83,17 @@ void leer_consola(t_log* logger)
 
 void paquete(int conexion)
 {
-	// Ahora toca lo divertido!
+	//Leemos y agrego lineas al paquete
 	char* leido;
-	t_paquete* paquete;
-
-	// Leemos y esta vez agregamos las lineas al paquete
-
-
-	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
+	t_paquete *paquete = crear_paquete();
+	leido=readline(">");
+	while(strcmp(leido, "") !=0){
+		agregar_a_paquete(paquete, leido, strlen(leido)+1);
+		free(leido);
+		leido=readline(">");
+	}
+	free(leido);
+	eliminar_paquete(paquete);
 	
 }
 
