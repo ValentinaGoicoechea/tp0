@@ -94,8 +94,6 @@ void paquete(int conexion)
 	}
 	//Envio paquete
 	enviar_paquete(paquete, conexion);
-
-	free(leido);
 	eliminar_paquete(paquete);
 	
 }
