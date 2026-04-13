@@ -33,6 +33,7 @@ int main(void)
 	/* ---------------- LEER DE CONSOLA ---------------- */
 
 	leer_consola(logger);
+	log_info(logger, "TERMINE DE LEER");
 
 	/*---------------------------------------------------PARTE 3-------------------------------------------------------------*/
 
@@ -45,6 +46,7 @@ int main(void)
 	enviar_mensaje(valor,conexion); 
 
 	// Armamos y enviamos el paquete
+	log_info(logger, "MENSAJES A ENVIAR");
 	paquete(conexion); 
 
 	terminar_programa(conexion, logger, config);
