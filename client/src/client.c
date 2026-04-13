@@ -86,12 +86,12 @@ void paquete(int conexion)
 	//Leemos y agrego lineas al paquete
 	char* leido;
 	t_paquete *paquete = crear_paquete();
-	leido=readline(">");
+	leido=readline("> ");
 	while(strcmp(leido, "") !=0){
 		agregar_a_paquete(paquete, leido, strlen(leido)+1);
 		free(leido);
 		leido=readline(">");
-	}
+	};
 	//Envio paquete
 	enviar_paquete(paquete, conexion);
 	eliminar_paquete(paquete);

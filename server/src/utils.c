@@ -6,7 +6,7 @@ int iniciar_servidor(void)
 {
 	int socket_servidor;
 
-	struct addrinfo hints, *servinfo, *p; //CREO Hints (Struct addrinfo), puntero a struct addrinfo (serverinfo y p)
+	struct addrinfo hints, *servinfo, *p;
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_INET;
